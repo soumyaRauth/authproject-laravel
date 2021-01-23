@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Exceptions;
-
+use Illuminate\Validation\Validator;
+// use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -45,6 +46,14 @@ class Handler extends ExceptionHandler
     // }
 
     public function render($request, Throwable $exception){
+        // dd(ValidationException);
+        // $validator = Validator::make($request,$rules);
+        // dd($validator);
+        // if($exception instanceof \Illuminate\Validation\ValidationException){
+        //     return \response([
+        //         'errors'=>$exception->error()
+        //     ]);
+        // }
         
         return response(['error'=>$exception->getMessage(),'code'=>$exception->getCode()? :400]);
 
